@@ -1,0 +1,39 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.1.0",
+    "configurations": [
+        
+
+        {
+            "name": "v-done-dev",
+            "request": "launch",
+            "type": "dart",
+            "program": "v_done/lib/main.dart",
+            "flutterMode": "debug",
+        },
+        {
+            "name": "v-done-prod",
+            "request": "launch",
+            "type": "dart",
+            "program": "one_app/lib/main.dart",
+          
+        },
+        //FOR COMPOUNDS ONLY
+        {
+            "name": "v-done-ios",
+            "request": "launch",
+            "type": "dart",
+            "program": "v_done/lib/main.dart",
+            "deviceId": "D70C2692-EEB0-4074-ACF5-8EAD816D1655"
+        },
+        {
+            "name": "v-done-android",
+            "request": "launch",
+            "type": "dart",
+            "program": "v_done/lib/main.dart",
+            "deviceId": "d04b070b0706"
+        },
+    ]
+}

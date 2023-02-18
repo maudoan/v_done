@@ -1,0 +1,13 @@
+# File: build.yaml
+# File Created: Tuesday, 20th July 2021 9:38:53 am
+# Author: Hieu Tran
+# -----
+# Last Modified: Tuesday, 20th July 2021 9:39:07 am
+# Modified By: Hieu Tran
+
+targets:
+  $default:
+    builders:
+      json_serializable:
+        options:
+          explicit_to_json: true

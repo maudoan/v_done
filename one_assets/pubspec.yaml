@@ -1,0 +1,24 @@
+name: one_assets
+description: A new Flutter package project.
+version: 0.0.1
+
+environment:
+  sdk: '>=2.18.0 <3.0.0'
+  flutter: ">=3.3.8"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_svg: ^1.0.3
+  path_provider: ^2.0.11
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - ../one_assets/lib/icons/global/
+    - ../one_assets/lib/images/
+    - ../one_assets/lib/icons/update_app/

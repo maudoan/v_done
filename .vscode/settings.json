@@ -1,0 +1,22 @@
+{
+    "files.exclude": {
+        ".run": true,
+        "**/*.g.dart": true,
+        "**/*.freezed.dart": true,
+        "**/.idea/": true,
+        "**/.dart_tool/": true,
+        "**/.flutter-plugins": true,
+        "**/.flutter-plugins-dependencies": true,
+        "**/.packages": true,
+        "**/pubspec.lock": true,
+        "**/.metadata": true,
+        "**/test": true,
+        "**/lib/generated_plugin_registrant.dart": true,
+        "**/**.iml": true,
+        "v_done/build/": false,
+        "v_done/android": false,
+        "v_done/ios": false,
+    },
+    "dart.lineLength": 200,
+    "java.configuration.updateBuildConfiguration": "disabled"
+}

@@ -1,0 +1,173 @@
+{
+    // See https://go.mi crosoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "run test",
+            "type": "shell",
+            "command": "./_scripts/test.sh",
+            "windows": {
+                "command": ".\\_scripts\\test.cmd"
+            }
+        },
+        //-----BUILD_APK_RELEASE-----
+        {
+            "label": "flutter_build_apk_debug_dev",
+            "type": "shell",
+            "command": "cd v_done/; flutter build apk --debug --obfuscate --split-debug-info=build/app/outputs/symbols"
+        },
+        {
+            "label": "flutter_build_apk_release_dev",
+            "type": "shell",
+            "command": "cd v_done/; flutter build apk --release --obfuscate --split-debug-info=build/app/outputs/symbols"
+        },
+        {
+            "label": "flutter_build_apk_release_prod",
+            "type": "shell",
+            "command": "cd v_done/; flutter build apk --release --obfuscate --split-debug-info=build/app/release --dart-define=ENV=release"
+        },
+        {
+            "label": "flutter_build_apk_debug_prod",
+            "type": "shell",
+            "command": "cd v_done/; flutter build apk --debug --obfuscate --split-debug-info=build/app/outputs/symbols --dart-define=ENV=PROD --dart-define=BASE_URL=https://api-onebss.Aneed.vn --dart-define=BASE_GOOGLE_MAPS_URL=https://maps.googleapis.com"
+        },
+        {
+            "label": "flutter_build_android_release",
+            "type": "shell",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "flutter_clean_all",
+                "flutter_pub_get_all",
+                "build_runner v_done",
+                "flutter_build_apk_release_prod"
+            ],
+           
+        },
+        //-----BUILD_IPA_RELEASE-----
+        {
+            "label": "delete_podfile_lock",
+            "type": "shell",
+            "command": "cd v_done/ios/; rm Podfile.lock",
+        },
+        {
+            "label": "flutter_build_ipa_release_dev",
+            "type": "shell",
+            "command": "cd v_done/; flutter build ipa --release --obfuscate --split-debug-info=build/app/outputs/symbols --dart-define=ENV=DEV --dart-define=DF_APP_NAME=AneedEmp-Dev --dart-define=BASE_URL=https://api-oneapp-dev.Aneedit3.vn --dart-define=BASE_GOOGLE_MAPS_URL=https://maps.googleapis.com"
+        },
+        {
+            "label": "flutter_build_ipa_release_prod",
+            "type": "shell",
+            "command": "cd v_done/; flutter build ipa --release --obfuscate --split-debug-info=build/app/outputs/symbols --dart-define=ENV=PROD --dart-define=BASE_URL=https://api-onebss.Aneed.vn --dart-define=BASE_GOOGLE_MAPS_URL=https://maps.googleapis.com"
+        },
+        {
+            "label": "flutter_build_ipa_debug_dev",
+            "type": "shell",
+            "command": "cd v_done/; flutter build ipa --debug --obfuscate --split-debug-info=build/app/outputs/symbols"
+        },
+        {
+            "label": "flutter_build_ios_release",
+            "type": "shell",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "flutter_clean_all",
+                "flutter_pub_get_all",
+                "build_runner v_done",
+                "pod repo update",
+                "delete_podfile_lock",
+                "flutter_build_ipa_release_prod"
+            ],
+           
+        },
+        //-----BUILD_LAUNCHER_ICONS-----
+        {
+            "label": "flutter_create_launcher_icons",
+            "type": "shell",
+            "command": "cd v_done/; flutter pub run flutter_launcher_icons:main"
+        },
+        //-----BUILD_NATIVE_SPLASH-----
+        {
+            "label": "flutter_create_native_splash",
+            "type": "shell",
+            "command": "cd v_done/; flutter pub run flutter_native_splash:create"
+        },
+        {
+            "label": "flutter_remove_native_splash",
+            "type": "shell",
+            "command": "cd v_done/; flutter pub run flutter_native_splash:remove"
+        },
+        //-----BUILD_RUNNER-----
+        {
+            "label": "build_runner v_done",
+            "type": "shell",
+            "command": "cd v_done/; flutter pub run build_runner build --delete-conflicting-outputs",
+            "dependsOn": [
+                "remove_gen_code v_done"
+            ]
+        },
+        {
+            "label": "build_runner one_components",
+            "type": "shell",
+            "command": "cd one_components/; flutter pub run build_runner build --delete-conflicting-outputs",
+            "dependsOn": [
+                "remove_gen_code one_components"
+            ]
+        },
+        {
+            "label": "build_runner one_assets",
+            "type": "shell",
+            "command": "cd one_assets/; flutter pub run build_runner build --delete-conflicting-outputs",
+            "dependsOn": [
+                "remove_gen_code one_assets"
+            ]
+        },
+        //-----FLUTTER_PUB_GET-----
+        {
+            "label": "flutter_pub_get one_assets",
+            "type": "shell",
+            "command": "cd one_assets/; flutter pub get"
+        },
+        {
+            "label": "flutter_pub_get one_components",
+            "type": "shell",
+            "command": "cd one_components/; flutter pub get"
+        },
+        {
+            "label": "flutter_pub_get v_done",
+            "type": "shell",
+            "command": "cd v_done/; flutter pub get"
+        },
+        {
+            "label": "flutter_pub_get_all",
+            "dependsOn": [
+                "flutter_pub_get one_assets",
+                "flutter_pub_get one_components",
+                "flutter_pub_get v_done"
+            ]
+        },
+        //-----FLUTTER_CLEAN-----
+        {
+            "label": "flutter_clean one_assets",
+            "type": "shell",
+            "command": "cd one_assets/; flutter clean"
+        },
+        {
+            "label": "flutter_clean one_components",
+            "type": "shell",
+            "command": "cd one_components/; flutter clean"
+        },
+        {
+            "label": "flutter_clean v_done",
+            "type": "shell",
+            "command": "cd v_done/; flutter clean"
+        },
+        {
+            "label": "flutter_clean_all",
+            "dependsOn": [
+                "flutter_clean one_assets",
+                "flutter_clean one_components",
+                "flutter_clean v_done"
+            ]
+        }
+    ]
+}

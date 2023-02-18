@@ -1,0 +1,14 @@
+# Hide generated files
+*.g.dart
+*.freezed.dart
+
+pubspec.lock
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+#Except for SDK
+!/one_app/ios/Runner/SDK/**/**.**
