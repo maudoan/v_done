@@ -24,6 +24,9 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       Get.find<SplashCubit>().getAppInfo();
+      Future.delayed(const Duration(milliseconds: 3000), () {
+        Get.offAllNamed(AppRoute.DASHBOARD_SCREEN.name);
+      });
     });
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(

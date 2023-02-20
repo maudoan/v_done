@@ -8,7 +8,6 @@ import 'package:one_assets/one_assets.dart';
 import 'package:v_done/src/data/_core/api_helper.dart';
 import 'package:v_done/src/data/service/service_locator.dart';
 import 'package:v_done/src/shared/app_route.dart';
-import 'package:v_done/src/ui/splash/splash_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

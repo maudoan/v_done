@@ -57,7 +57,9 @@ dependencies:
   #   path: ../one_base
   one_assets:
     path: ../one_assets
-
+  v_live1:
+    path: ../v_live
+  
 dev_dependencies:
   flutter_launcher_icons: ^0.11.0
   flutter_native_splash: ^2.2.16
@@ -109,4 +111,3 @@ flutter:
   assets:
     # - .env
     - assets/img/splash_bg.png
-   

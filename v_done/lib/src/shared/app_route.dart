@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:v_done/src/ui/dashboard/dash_board.dart';
 import 'package:v_done/src/ui/splash/cubit/splash_cubit.dart';
 import 'package:v_done/src/ui/splash/splash_screen.dart';
+import 'package:v_live1/src/shared/v_live_route.dart';
 
-enum AppRoute {
-  SPALSH_SCREEN,
-}
+enum AppRoute { SPALSH_SCREEN, DASHBOARD_SCREEN }
 
 extension AppRouteExt on AppRoute {
   String get name {
     switch (this) {
       case AppRoute.SPALSH_SCREEN:
         return '/splash';
+      case AppRoute.DASHBOARD_SCREEN:
+        return '/dashboard';
     }
   }
 
@@ -25,6 +27,12 @@ extension AppRouteExt on AppRoute {
   }
 
   static Route generateRoute(RouteSettings settings) {
+    final routeName = settings.name;
+      final tienIchRoutes = VLiveRoute.values.map((v) => v.name).toList();
+
+    if (tienIchRoutes.contains(routeName)) {
+      return VLiveRouteExt.generateRoute(settings);
+    }
     switch (AppRouteExt.from(settings.name)) {
       case AppRoute.SPALSH_SCREEN:
         return GetPageRoute(
@@ -32,6 +40,15 @@ extension AppRouteExt on AppRoute {
             page: () => const SplashScreen(),
             bindings: [
               BindingsBuilder.put(() => SplashCubit()),
+            ],
+            curve: Curves.ease,
+            transition: Transition.fade);
+      case AppRoute.DASHBOARD_SCREEN:
+        return GetPageRoute(
+            settings: settings,
+            page: () => const DashBoardScreen(),
+            bindings: [
+              // BindingsBuilder.put(() => SplashCubit()),
             ],
             curve: Curves.ease,
             transition: Transition.fade);
