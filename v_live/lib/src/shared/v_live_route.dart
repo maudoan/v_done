@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:v_live1/src/ui/CreateLive/create_live.dart';
-import 'package:v_live1/src/ui/WatchLive/watch_live.dart';
+import 'package:v_live1/src/ui/createLive/create_live.dart';
+import 'package:v_live1/src/ui/watchLive/watch_live.dart';
 
 enum VLiveRoute { CREATELIVE_SCREEN, WATCHLIVE_SCREEN }
 
